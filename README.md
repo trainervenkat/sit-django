@@ -1,0 +1,1 @@
+# Basic django framework structure
