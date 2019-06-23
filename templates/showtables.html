@@ -1,38 +1,33 @@
-{% extends 'base/layout.html' %}
-
-{% block content %}
-<div class="container">
-    <form action="" method="POST">
-        {% csrf_token %}
-        {{form}}
-        <button type="submit" class="btn btn-warning">Search</button>
-    </form>
-</div>
-
-{% if book %}
+{% extends 'base/layout.html' %} {% block content %}
 <div class="container mt-5">
+    {% if not book %}
+    <div class="card">
+        <div class="card-body text-center h2 text-uppercase">
+            <h5 class="card-title">No Record Found</h5>
+        </div>
+    </div>
+    {% else %}
     <table class="table">
         <thead clas="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Book Name</th>
-            <th scope="col">Author</th>
-            <th scope="col">Purchase Date</th>
-            <th scope="col">Genre</th>
-            <th scope="col">Action</th>
-          </tr>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Purchase Date</th>
+                <th scope="col">Genre</th>
+                <th scope="col">Action</th>
+            </tr>
         </thead>
+
         <tbody>
-          {% for bk in book %}
+            {% for bk in book %}
             <tr>
                 <th scope="row">{{bk.id}}</th>
                 <td>{{bk.name}}</td>
                 <td>{{bk.purchase_date}}</td>
                 <td>{{bk.author}}</td>
                 <td>
-                    {% for g in bk.genre.all %}
-                    {{g.name}}
-                    {% endfor %}
+                    {% for g in bk.genre.all %} {{g.name}} {% endfor %}
                 </td>
                 <td>
                     <a href="/editbook/{{bk.id}}">
@@ -42,12 +37,11 @@
                         <span class="text-danger">Delete</span>
                     </a>
                 </td>
-            </tr>          
-          {% endfor %}
+            </tr>
+            {% endfor %}
         </tbody>
-      </table>
+
+        {% endif %}
+    </table>
 </div>
-{% endif %}
-
-
 {% endblock %}
