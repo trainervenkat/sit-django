@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 *.sqlite3
+reference.txt
 
 # C extensions
 *.so
