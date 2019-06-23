@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from home.views import home_view
+from catalog import views
+
 
 urlpatterns = [
-    path('',home_view),
+    path('',views.booksearch),
+    path('deletebook/<id>',views.deletebook),
+    path('editbook/<id>',views.editbook),
+    path('form/',views.form_view),
+    path('model/',views.model_form),
+    path('html/',views.html_form),
     path('admin/', admin.site.urls),
 ]
