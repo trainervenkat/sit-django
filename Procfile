@@ -1,1 +1,1 @@
-web: gunicorn tactfulness.wsgi --log-file -
+web: gunicorn myweb.wsgi --log-file -
