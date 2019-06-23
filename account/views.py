@@ -8,9 +8,6 @@ from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from account.forms import Userform
 
-def special(request):
-    return HttpResponse('You\'re loggeddin!!')
-
 def user_logout(request):
     logout(request)
     return redirect('/')
